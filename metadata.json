@@ -1,0 +1,8 @@
+{
+  "name": "SoulScript: AI Reflection Journal",
+  "description": "A private, user-authenticated AI journaling and reflection web application powered by Firestore and Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
