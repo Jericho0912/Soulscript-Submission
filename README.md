@@ -1,79 +1,245 @@
-readme_content = """# 🌟 Soulscript Submission
+# 🌙 SoulScript
 
-<div align="center">
+### Private AI Reflection Journal
 
-[![Soulgraph Ecosystem](https://img.shields.io/badge/Ecosystem-Soulgraph-purple?style=flat-square)](https://www.arc.fun/)
-[![Spec Version](https://img.shields.io/badge/Spec-JSON-blue?style=flat-square)](https://json-schema.org/)
-[![Status](https://img.shields.io/badge/Status-Submitted-success?style=flat-square)](#)
+SoulScript is a private, AI-powered journaling and reflection application designed to help users slow down, process their thoughts, and gain meaningful insights from their personal reflections.
 
-*A custom portable agent personality specification built for the Soulgraph ecosystem.*
+Instead of acting as a generic chatbot, SoulScript is designed as an **empathetic reflection partner**. Users can write about their experiences, emotions, challenges, or ideas and engage in a contextual conversation powered by Google Gemini.
 
-</div>
+> **Ideathon Challenge — Google Gen AI Academy Cohort 3**
 
 ---
 
-## 🧭 Overview
+## ✨ Features
 
-This repository contains a custom **Soulscript** personality submission. Soulscript is an open-source, JSON-based language specification designed to define portable, distinct, and persistent AI agent identities. 
-
-By defining core traits, values, and behavioral expression patterns, this specification acts as the foundational DNA for an AI agent—allowing it to maintain core behavioral consistency while evolving through dynamic interactions and memory integration.
-
----
-
-## 🎭 Agent Profile
-
-- **Agent Name:** Apex / Custom Persona
-- **Archetype:** Enterprise Technical Companion & AI Architect
-- **Core Philosophy:** Bridging robust engineering patterns with intuitive, context-aware assistance.
-
-### 🧬 Core Traits & Weights
-
-| Trait | Strength (0.0 - 1.0) | Description / Behavioral Focus |
-| :--- | :---: | :--- |
-| **Analytical** | `0.9` | Systematic breakdown of complex architectural, cloud, and engineering challenges. |
-| **Adaptive** | `0.8` | Fluidly shifts between high-level strategic design and granular implementation. |
-| **Pragmatic** | `0.85` | Focuses on efficient, scalable, and production-ready solutions. |
-| **Engaging** | `0.75` | Communicates with clarity, professional depth, and contextual relevance. |
+* 📝 **Private Journaling** — Create and revisit personal reflection entries.
+* 💬 **AI Reflection** — Have contextual, multi-turn conversations about your thoughts.
+* 🧠 **AI Insights** — Receive reflections, gentle psychological insights, constructive feedback, and concise takeaways.
+* 🔐 **Google Authentication** — Secure sign-in using Firebase Authentication.
+* ☁️ **Cloud Persistence** — Journal entries and reflection data are stored using Firebase Firestore.
+* 🎨 **Minimal Interface** — A calm, distraction-free interface inspired by Apple's Human Interface Guidelines.
+* 📱 **Responsive Experience** — Designed for a comfortable experience across screen sizes.
 
 ---
 
-## 📄 Soulscript Definition (`soulscript.json`)
+## 🧠 How It Works
 
-```json
-{
-  "personality": {
-    "name": "Apex",
-    "version": "1.0.0",
-    "archetype": "Enterprise AI Assistant & Technical Companion",
-    "core_traits": [
-      {
-        "trait": "analytical",
-        "strength": 0.9,
-        "description": "Systematic breakdown of complex engineering, cloud, and AI architectures."
-      },
-      {
-        "trait": "adaptive",
-        "strength": 0.8,
-        "description": "Seamlessly transitions from high-level strategic design down to implementation details."
-      },
-      {
-        "trait": "pragmatic",
-        "strength": 0.85,
-        "description": "Prioritizes scalable, maintainable, and production-tested solutions."
-      }
-    ],
-    "values": [
-      "Clarity over complexity",
-      "Robust automation and system resilience",
-      "Continuous learning and architectural refinement"
-    ],
-    "expression_patterns": {
-      "tone": "Professional, articulate, and encouraging",
-      "formality": "Moderate-high",
-      "quirks": [
-        "Leverages clean code and system design metaphors",
-        "Values precision and structured communication"
-      ]
-    }
-  }
-}
+```text
+                 ┌──────────────────────┐
+                 │       User           │
+                 │  Journal / Reflect   │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │   React Frontend     │
+                 │     Vite + TS        │
+                 └──────────┬───────────┘
+                            │
+                ┌───────────┴───────────┐
+                │                       │
+                ▼                       ▼
+       ┌─────────────────┐     ┌─────────────────┐
+       │ Firebase Auth   │     │   Firestore     │
+       │  Google Sign-In │     │ Journal Entries │
+       └─────────────────┘     └─────────────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │   Express Backend    │
+                 │    /api/reflect      │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │    Google Gemini     │
+                 │ AI Reflection Engine │
+                 └──────────────────────┘
+```
+
+The frontend communicates with an Express backend for AI functionality. Gemini is initialized on the server using `GEMINI_API_KEY`, preventing the API key from being exposed directly to the browser.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology                  | Purpose                                 |
+| --------------------------- | --------------------------------------- |
+| **React 19**                | Frontend application                    |
+| **TypeScript**              | Type-safe development                   |
+| **Vite**                    | Frontend tooling and development server |
+| **Tailwind CSS**            | UI styling                              |
+| **Firebase Authentication** | Google authentication                   |
+| **Cloud Firestore**         | Journal and reflection persistence      |
+| **Google Gemini**           | AI reflection and insights              |
+| **Express**                 | Backend API                             |
+| **Lucide React**            | Interface icons                         |
+| **Motion**                  | UI animations                           |
+| **esbuild**                 | Server bundling                         |
+
+The project's dependencies and build scripts are defined in `package.json`.
+
+---
+
+## 📂 Project Structure
+
+```text
+Soulscript-Submission/
+├── assets/
+│   └── .aistudio/
+├── src/
+│   ├── components/
+│   │   ├── Dashboard.tsx
+│   │   ├── JournalChat.tsx
+│   │   ├── LandingPage.tsx
+│   │   └── Navbar.tsx
+│   ├── lib/
+│   │   └── firebase.ts
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── types.ts
+│   └── vite-env.d.ts
+├── firestore.rules
+├── server.ts
+├── .env.example
+├── firebase-applet-config.json
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+The application is organized around reusable React components for the landing page, dashboard, navigation, and AI-powered journal conversation experience.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have:
+
+* Node.js installed
+* A Firebase project
+* Firebase Authentication configured with Google Sign-In
+* A Cloud Firestore database
+* A Google Gemini API key
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Jericho0912/Soulscript-Submission.git
+cd Soulscript-Submission
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file based on `.env.example`:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+The Gemini API key is consumed by the Express backend rather than being embedded in the frontend.
+
+### 4. Configure Firebase
+
+Create or connect a Firebase project and configure:
+
+* Firebase Authentication
+* Google Sign-In
+* Cloud Firestore
+
+Make sure the Firebase configuration used by the application matches your Firebase project.
+
+### 5. Start the development server
+
+```bash
+npm run dev
+```
+
+The application runs through the Express server and is available on:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 🔐 Privacy & Security
+
+Privacy is a core design principle of SoulScript because journal entries may contain highly personal information.
+
+Firestore security rules are included in the repository to restrict access to authenticated users and their own data.
+
+The Gemini API is also accessed through the server-side `/api/reflect` endpoint rather than directly from the client. This keeps the Gemini API credential out of the browser.
+
+**Important:** Never commit your `.env` file or expose your `GEMINI_API_KEY` publicly.
+
+---
+
+## 🤖 AI Reflection
+
+SoulScript uses Gemini as a reflection and journaling assistant.
+
+The AI is instructed to act as a:
+
+> Compassionate, insightful, and wise AI reflection partner and journaling guide.
+
+It can help users:
+
+* Unpack thoughts and experiences
+* Explore personal challenges
+* Reflect on journal entries
+* Generate gentle psychological insights
+* Provide constructive feedback
+* Brainstorm ideas
+* Summarize important takeaways
+
+The application sends conversation history and contextual information to the backend, allowing the AI to maintain the context of an active reflection session.
+
+---
+
+## 🏗️ Build for Production
+
+Create a production build with:
+
+```bash
+npm run build
+```
+
+This builds the Vite frontend and bundles the Express server using esbuild.
+
+To run the production build:
+
+```bash
+npm start
+```
+
+The available project scripts include development, production build, start, clean, and TypeScript checking.
+
+---
+
+## 🎯 Project Vision
+
+SoulScript is built around a simple idea:
+
+**Journaling should not just be about recording what happened—it can also be an opportunity to understand why we feel and think the way we do.**
+
+By combining traditional journaling with conversational AI, SoulScript aims to create a more interactive and introspective way of processing personal experiences.
+
+The AI is not intended to replace professional mental-health support. Instead, it serves as a private tool for reflection, organization, and self-discovery.
+
+---
+
+## 📄 License
+
+This project was created as a submission for the **Google Gen AI Academy Cohort 3 Ideathon Challenge**.
+
+See the repository for the latest project and licensing information.
